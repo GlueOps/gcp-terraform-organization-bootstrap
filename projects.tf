@@ -1,6 +1,3 @@
-variable "company_key" {}
-
-
 resource "google_folder" "core" {
   display_name = "${var.company_key} Core"
   parent       = "organizations/${var.org_id}"
