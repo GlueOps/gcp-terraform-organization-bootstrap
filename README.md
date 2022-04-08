@@ -1,1 +1,1 @@
-# gcp-terraform-organization-bootstrap
+# terraform-gcp-organization-bootstrap
