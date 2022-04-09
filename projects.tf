@@ -1,6 +1,9 @@
 resource "google_folder" "core" {
   display_name = "${var.company_key} Core"
   parent       = "organizations/${var.org_id}"
+  depends_on = [
+    google_organization_iam_binding.admin_binding,
+  ]
 }
 
 resource "google_project" "development" {
