@@ -1,3 +1,5 @@
 # terraform-gcp-organization-bootstrap
 
-Prerequisite: TFC service account needs the following role: `Organization Administrator` 
+Prerequisite: TFC service account needs the following roles:
+* `Organization Administrator` 
+* `Project Creator` 
