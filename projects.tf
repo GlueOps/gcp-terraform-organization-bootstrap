@@ -10,4 +10,16 @@ resource "google_project" "env_project" {
   name       = "${var.company_key}-${each.value}"
   project_id = "${var.company_key}-${each.value}"
   folder_id  = google_folder.core.name
+  labels     = { "env" : each.value }
 }
+
+locals {
+  environments = {
+    for project in google_project.env_project : project.labels.env => project
+  }
+}
+
+output "project_environments" {
+  value = local.environments
+}
+
