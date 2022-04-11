@@ -5,22 +5,9 @@ resource "google_folder" "core" {
     google_organization_iam_binding.admin_binding,
   ]
 }
-
-resource "google_project" "development" {
-  name       = "${var.company_key}-development"
-  project_id = "${var.company_key}-development"
+resource "google_project" "env_project" {
+  for_each   = toset(var.environments)
+  name       = "${var.company_key}-${each.value}"
+  project_id = "${var.company_key}-${each.value}"
   folder_id  = google_folder.core.name
 }
-
-resource "google_project" "uat" {
-  name       = "${var.company_key}-uat"
-  project_id = "${var.company_key}-uat"
-  folder_id  = google_folder.core.name
-}
-
-resource "google_project" "production" {
-  name       = "${var.company_key}-production"
-  project_id = "${var.company_key}-production"
-  folder_id  = google_folder.core.name
-}
-
