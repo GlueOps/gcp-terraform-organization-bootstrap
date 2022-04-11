@@ -1,3 +1,4 @@
+# Separating apply of organizationAdmin role because it must be applied first and destroyed last.
 resource "google_organization_iam_binding" "org_admin_binding" {
   org_id = var.org_id
   role   = "roles/resourcemanager.organizationAdmin"
