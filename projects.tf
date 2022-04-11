@@ -19,11 +19,7 @@ locals {
   }
 }
 
-output "environments" {
+output "project_environments" {
   value = local.environments
-}
-
-output "environment_folder" {
-  value = google_folder.core.name
 }
 
