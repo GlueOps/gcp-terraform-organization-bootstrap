@@ -1,10 +1,3 @@
-locals {
-  environments = {
-    for env in var.environments : "${var.company_key}-${env}"
-  }
-}
-
-
 resource "google_folder" "core" {
   display_name = "${var.company_key} Core"
   parent       = "organizations/${var.org_id}"
