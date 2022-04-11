@@ -25,7 +25,7 @@ variable "admin_roles" {
 
 variable "environments" {
   type        = list(string)
-  default     = ["development", "uat", "production"]
+  default     = ["development", "jsakldslakdj", "production"]
   description = "Array of environments to create in GCP"
 }
 
