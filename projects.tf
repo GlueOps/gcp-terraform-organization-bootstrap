@@ -1,3 +1,10 @@
+locals {
+  environments = {
+    for env in var.environments : "${var.company_key}-${env}"
+  }
+}
+
+
 resource "google_folder" "core" {
   display_name = "${var.company_key} Core"
   parent       = "organizations/${var.org_id}"
@@ -7,7 +14,24 @@ resource "google_folder" "core" {
 }
 resource "google_project" "env_project" {
   for_each   = toset(var.environments)
+  for_each   = toset(var.environments)
   name       = "${var.company_key}-${each.value}"
   project_id = "${var.company_key}-${each.value}"
   folder_id  = google_folder.core.name
+  labels = {"env" : each.value}
 }
+
+locals {
+  environments = {
+    for project in google_project.env_project : project.labels, project.project_id, project.name
+  }
+}
+
+output "environments" {
+  value = local.environments
+}
+
+output "environment_folder" {
+  value = google_folder.core.name
+}
+
