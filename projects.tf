@@ -14,7 +14,6 @@ resource "google_folder" "core" {
 }
 resource "google_project" "env_project" {
   for_each   = toset(var.environments)
-  for_each   = toset(var.environments)
   name       = "${var.company_key}-${each.value}"
   project_id = "${var.company_key}-${each.value}"
   folder_id  = google_folder.core.name
