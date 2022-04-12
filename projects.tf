@@ -10,7 +10,7 @@ resource "google_project" "env_project" {
   name       = "${var.company_key}-${each.value}"
   project_id = "${var.company_key}-${each.value}"
   folder_id  = google_folder.core.name
-  labels     = { "env" : each.value }
+  labels     = { "environment" : each.value }
 }
 
 locals {
