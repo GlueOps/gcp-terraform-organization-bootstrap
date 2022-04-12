@@ -15,7 +15,7 @@ resource "google_project" "env_project" {
 
 locals {
   environments = {
-    for project in google_project.env_project : project.labels.env => project
+    for project in google_project.env_project : project.labels.environment => project
   }
 }
 
