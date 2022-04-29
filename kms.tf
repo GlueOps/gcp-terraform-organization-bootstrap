@@ -1,11 +1,13 @@
 resource "google_kms_key_ring" "keyring" {
-  project  = data.google_projects.env_project.projects[0].project_id
-  name     = var.workspace
+  for_each = toset(local.environments)
+  project  = each.value.project_id
+  name     = each.value.labels.environment
   location = "global"
 }
 
 resource "google_kms_crypto_key" "key" {
-  name     = "encrypt_decrypt-${var.workspace}"
+  for_each = toset(local.environments)
+  name     = "encrypt_decrypt-${each.value.labels.environment}"
   key_ring = google_kms_key_ring.keyring.id
   purpose  = "ENCRYPT_DECRYPT"
   labels   = {}
