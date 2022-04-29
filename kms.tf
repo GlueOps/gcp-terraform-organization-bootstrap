@@ -1,5 +1,5 @@
 resource "google_kms_key_ring" "keyring" {
-  for_each = toset(local.environments)
+  for_each = local.environments
   project  = each.value.project_id
   name     = each.value.labels.environment
   location = "global"
