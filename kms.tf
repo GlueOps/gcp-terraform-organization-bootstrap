@@ -6,7 +6,7 @@ resource "google_kms_key_ring" "keyring" {
 
 resource "google_kms_crypto_key" "key" {
   name     = "encrypt_decrypt-${var.workspace}"
-  key_ring = google_kms_key_ring.appengine.id
+  key_ring = google_kms_key_ring.keyring.id
   purpose  = "ENCRYPT_DECRYPT"
   labels   = {}
 
