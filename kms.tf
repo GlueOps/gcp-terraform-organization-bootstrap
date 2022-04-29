@@ -6,9 +6,9 @@ resource "google_kms_key_ring" "keyring" {
 }
 
 resource "google_kms_crypto_key" "key" {
-  #for_each = local.environments
+  for_each = local.environments
   name     = "encrypt_decrypt-${each.value.labels.environment}"
-  key_ring = google_kms_key_ring.keyring["development"].id
+  key_ring = google_kms_key_ring.keyring[each.value.lablels.environment].id
   purpose  = "ENCRYPT_DECRYPT"
   labels   = {}
 
