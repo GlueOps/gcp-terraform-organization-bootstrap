@@ -5,17 +5,17 @@ resource "google_kms_key_ring" "keyring" {
   location = "global"
 }
 
-resource "google_kms_crypto_key" "key" {
-  for_each = toset(local.environments)
-  name     = "encrypt_decrypt-${each.value.labels.environment}"
-  key_ring = google_kms_key_ring.keyring.id[each.value.lablels.environment]
-  purpose  = "ENCRYPT_DECRYPT"
-  labels   = {}
-
-  destroy_scheduled_duration = 4320
-
-  lifecycle {
-    prevent_destroy = true
-  }
-}
+#resource "google_kms_crypto_key" "key" {
+#  for_each = toset(local.environments)
+#  name     = "encrypt_decrypt-${each.value.labels.environment}"
+#  key_ring = google_kms_key_ring.keyring.id[each.value.lablels.environment]
+#  purpose  = "ENCRYPT_DECRYPT"
+#  labels   = {}
+#
+#  destroy_scheduled_duration = 4320
+#
+#  lifecycle {
+#    prevent_destroy = true
+#  }
+#}
 
