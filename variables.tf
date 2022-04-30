@@ -33,6 +33,7 @@ variable "active_googleapis" {
   type = list(string)
   default = [
     "appengine.googleapis.com",
+    "cloudbilling.googleapis.com",
     "cloudbuild.googleapis.com",
     "cloudkms.googleapis.com",
     "cloudresourcemanager.googleapis.com",
