@@ -1,3 +1,9 @@
+data "google_billing_account" "acct" {
+  display_name = "My Billing Account"
+  open         = true
+}
+
+
 resource "google_folder" "core" {
   display_name = "${var.company_key} Core"
   parent       = "organizations/${var.org_id}"
@@ -6,11 +12,12 @@ resource "google_folder" "core" {
   ]
 }
 resource "google_project" "env_project" {
-  for_each   = toset(var.environments)
-  name       = "${var.company_key}-${each.value}"
-  project_id = "${var.company_key}-${each.value}"
-  folder_id  = google_folder.core.name
-  labels     = { "environment" : each.value }
+  for_each        = toset(var.environments)
+  name            = "${var.company_key}-${each.value}"
+  project_id      = "${var.company_key}-${each.value}"
+  folder_id       = google_folder.core.name
+  labels          = { "environment" : each.value }
+  billing_account = data.google_billing_account.acct.id
 }
 
 locals {
