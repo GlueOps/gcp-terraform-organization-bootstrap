@@ -29,3 +29,20 @@ variable "environments" {
   description = "Array of environments to create in GCP"
 }
 
+variable "active_googleapis" {
+  type = list(string)
+  default = [
+    "appengine.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "cloudkms.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "containerregistry.googleapis.com",
+    "iam.googleapis.com",
+    "iamcredentials.googleapis.com",
+    "logging.googleapis.com",
+    "pubsub.googleapis.com",
+    "storage-api.googleapis.com",
+  ]
+  description = "Array of apis to activate in GCP"
+}
+
