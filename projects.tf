@@ -14,12 +14,12 @@ resource "google_project" "env_project" {
 }
 
 locals {
-  environments = {
+  projects_data = {
     for project in google_project.env_project : project.labels.environment => project
   }
 }
 
 output "project_environments" {
-  value = local.environments
+  value = local.projects_data
 }
 
