@@ -1,9 +1,9 @@
 locals {
-  env_apis = distinct(flatten([
-    for env in var.environments : [
+  project_apis = distinct(flatten([
+    for project in local.projects_data : [
       for api in var.active_googleapis : {
-        env = env
-        api = api
+        project = project.project_id
+        api     = api
       }
     ]
   ]))
@@ -12,11 +12,11 @@ locals {
 
 resource "google_project_service" "activate_apis" {
   for_each = {
-    for env_api in local.env_apis :
-    "${env_api.env}.${env_api.api}" => env_api
+    for project_api in local.project_apis :
+    "${project_api.project}.${project_api.api}" => project_api
   }
 
-  project = each.value.env
+  project = each.value.project
   service = each.value.api
 
   timeouts {
