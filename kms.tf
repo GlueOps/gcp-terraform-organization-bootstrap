@@ -12,10 +12,12 @@ resource "google_kms_crypto_key" "key" {
   purpose  = "ENCRYPT_DECRYPT"
   labels   = {}
 
-  destroy_scheduled_duration = "10368000s" # 120 days
+  #destroy_scheduled_duration = "10368000s" # 120 days
+  destroy_scheduled_duration = "5s" # 120 days
 
   lifecycle {
-    prevent_destroy = true
+    #prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
