@@ -4,6 +4,11 @@ variable "org_id" {
   description = "Your GCP Organization ID."
 }
 
+variable "gcp_billing_account_name" {
+  type        = string
+  description = "Your GCP Billing Account Name"
+}
+
 variable "company_key" {
   type        = string
   default     = ""
