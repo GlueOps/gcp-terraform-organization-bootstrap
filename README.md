@@ -1,6 +1,8 @@
 # terraform-gcp-organization-bootstrap
 
 
+This Terraform module helps you bootstrap your organization in GCP with a core set of projects
+
 Example usage:
 
 ```hcl
@@ -39,6 +41,18 @@ module "organization_and_project_bootstrap" {
 }
 ```
 
+
+## Inputs Required:
+
+| Name | Description | Required |
+| --- | ----------- | -------- |
+| org_id | Your GCP Organization ID. | Yes |
+| gcp_billing_account_name | Your GCP Billing Account Name | Yes |
+| company_key | Your company identifier, with no whitespace. | Yes |
+| admins | Array of admins (users and service accounts) to assign admin roles to. | Yes |
+| admin_roles | Array of roles to assign to admins | Yes |
+| environments | Array of environments to create in GCP (1 per project) | Yes |
+| active_googleapis | Array of apis to activate in GCP in each GCP Project | Yes |
 
 Prerequisite:
 
