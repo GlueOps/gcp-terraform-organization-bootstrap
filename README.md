@@ -1,5 +1,45 @@
 # terraform-gcp-organization-bootstrap
 
+
+Example usage:
+
+```hcl
+
+locals {
+  org_id                   = "123456789"
+  company_key              = "antoniostacos"
+  gcp_billing_account_name = "My Billing Account"
+
+  admins = [
+    "user:venkata.mutyala@glueops.dev",
+    "user:antonio.rodriguez@glueops.dev",
+    "serviceAccount:svc-terraform@antoniostacos-1-svc-accounts.iam.gserviceaccount.com",
+  ]
+
+  # ref: https://cloud.google.com/iam/docs/understanding-roles
+  admin_roles = [
+    "roles/owner",
+    "roles/resourcemanager.folderAdmin",
+    "roles/iam.serviceAccountUser",
+    "roles/logging.admin",
+    "roles/serviceusage.serviceUsageAdmin",
+    "roles/orgpolicy.policyAdmin",
+    "roles/servicemanagement.quotaAdmin",
+  ]
+}
+
+
+module "organization_and_project_bootstrap" {
+  source                   = "github.com/GlueOps/terraform-gcp-organization-bootstrap.git"
+  org_id                   = local.org_id
+  company_key              = local.company_key
+  admins                   = local.admins
+  admin_roles              = local.admin_roles
+  gcp_billing_account_name = local.gcp_billing_account_name
+}
+```
+
+
 Prerequisite:
 
 1. At the Organization level, grant `Billing Account Administrator`, `Owner`, and `Organization Administrator` permissions to your user.
