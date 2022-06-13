@@ -50,6 +50,7 @@ variable "active_googleapis" {
     "storage-api.googleapis.com",
     "compute.googleapis.com",
     "container.googleapis.com",
+    "vpcaccess.googleapis.com",
   ]
   description = "Array of apis to activate in GCP"
 }
