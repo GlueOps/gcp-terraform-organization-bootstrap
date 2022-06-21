@@ -69,6 +69,7 @@ ref: https://lunajacob.medium.com/setting-up-terraform-cloud-with-gcp-e1fe6c99a7
    Enable `CloudBuild API` for service account, at https://console.cloud.google.com/apis/library/cloudbuild.googleapis.com
    Enable `Kubernetes Engine API` for service account, at https://console.developers.google.com/apis/library/container.googleapis.com
    Enable `Service Networking` for service account, at: https://console.cloud.google.com/apis/api/servicenetworking.googleapis.com/
+   Enable `Cloud SQL Admin API` for service account, at: https://console.cloud.google.com/apis/library/sqladmin.googleapis.com
 
 
 5. open CloudShell in the service account project and run the following:
