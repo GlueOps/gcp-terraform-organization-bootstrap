@@ -54,6 +54,7 @@ variable "active_googleapis" {
     "servicenetworking.googleapis.com",
     "networkmanagement.googleapis.com",
     "sqladmin.googleapis.com",
+    "cloudscheduler.googleapis.com",
   ]
   description = "Array of apis to activate in GCP"
 }
