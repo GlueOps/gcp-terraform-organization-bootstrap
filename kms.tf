@@ -19,7 +19,7 @@ resource "google_kms_crypto_key" "key" {
   destroy_scheduled_duration = "10368000s" # 120 days
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   depends_on = [
