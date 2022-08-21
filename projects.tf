@@ -29,4 +29,8 @@ locals {
 output "project_environments" {
   value = local.projects_data
 }
+  
+output "gcp_folder_id" {
+  value = google_folder.core.name
+}
 
