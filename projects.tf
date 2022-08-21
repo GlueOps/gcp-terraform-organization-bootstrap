@@ -31,6 +31,6 @@ output "project_environments" {
 }
   
 output "gcp_folder_id" {
-  value = nonsensitive(google_folder.core.name)
+  value = google_folder.core.name
 }
 
